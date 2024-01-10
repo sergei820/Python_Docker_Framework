@@ -1,0 +1,3 @@
+TestConfig:
+  base_url: https://www.w3schools.com/
+  trysql_url: sql/trysql.asp?filename=trysql_select_all
