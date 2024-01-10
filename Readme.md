@@ -12,7 +12,13 @@ Task:
 - Тесты должны запускаться в docker контейнере
 - Код автотестов нужно выложить в любой git-репозиторий
 
+
+
 what should be done:
+python.exe -m pip install --upgrade pip
+pip install --upgrade webdriver_manager
+pip install --upgrade selenium
+pip install webdriver_manager
 pip install pyyaml
 
 вынести инициализацию драйвера в фикстуру
