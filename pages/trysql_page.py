@@ -7,8 +7,6 @@ class TrySqlPage:
     SQL_STATEMENT = (By.CSS_SELECTOR, ".CodeMirror-code")
     RUN_SQL_BUTTON = (By.XPATH, "//button[text()='Run SQL »']")
     NUMBER_OF_RECORDS_RETURNED = (By.XPATH, "//div[contains(text(), 'Number of Records:')]")
-    TABLE_ROW = (By.CSS_SELECTOR, "table.w3-table-all tr:nth-child(1)")
-    TEST_ELEM = (By.XPATH, "//h3[contains(text(), 'Result:')]")
 
     def __init__(self, driver):
         self.driver = driver
@@ -38,10 +36,11 @@ class TrySqlPage:
         # print(text_of_element)
         self.driver.switch_to.default_content()
 
-    def check_address_for_contactname(self, address: str, contact_name: str):
-        pass
+    def check_address_for_contact_name(self, address: str, contact_name: str):
+        """ContactName               'Giovanni Rovelli'        имеет
+        Address = 'Via Ludovico il Moro 22'.        """
 
-
-
-
-
+    def get_customer_id_by_text(self, text_to_find):
+        customer_id_element = self.driver.find_element(By.XPATH, f"//td[contains(text(), '{text_to_find}')]/parent::tr/td[1]")
+        return int(customer_id_element.text)
+# //table[@class='w3-table-all notranslate']//tr/td[1]
