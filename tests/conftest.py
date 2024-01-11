@@ -21,5 +21,6 @@ def driver():
     service = Service(executable_path=chrome_driver_path)
 
     driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver.implicitly_wait(1)
     yield driver
     driver.quit()

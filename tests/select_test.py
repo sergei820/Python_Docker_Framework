@@ -9,7 +9,8 @@ def test_address_for_contactname(driver):
 
 
 
-    trySqlPage = TrySqlPage(driver)
-    trySqlPage.open_page()
-    trySqlPage.click_run_sql()
+    try_sql_page = TrySqlPage(driver)
+    try_sql_page.open_page()
+    try_sql_page.click_run_sql()
+    try_sql_page.check_returned_values()
 
