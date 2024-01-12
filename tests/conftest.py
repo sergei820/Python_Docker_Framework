@@ -2,10 +2,11 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 @pytest.fixture
-def driver():
+def chrome_driver():
     chrome_options = webdriver.ChromeOptions()
     # chrome_options.add_argument('--headless')
     chrome_options.page_load_strategy = 'eager'
@@ -21,6 +22,25 @@ def driver():
     service = Service(executable_path=chrome_driver_path)
 
     driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver.implicitly_wait(1)
+    yield driver
+    driver.quit()
+
+
+@pytest.fixture
+def ff_driver():
+
+    ff_options = webdriver.FirefoxOptions()
+    ff_options.page_load_strategy = 'eager'
+    ff_options.add_argument('--allow-insecure-localhost')
+    ff_options.add_argument('--ignore-certificate-errors')
+    ff_options.add_argument("--ignore-ssl-errors")
+    ff_options.add_argument('--disable-dev-shm-usage')
+
+    firefox_driver_path = GeckoDriverManager().install()
+    service = Service(executable_path=firefox_driver_path)
+    driver = webdriver.Firefox(service=service, options=ff_options)
+
     driver.implicitly_wait(1)
     yield driver
     driver.quit()
