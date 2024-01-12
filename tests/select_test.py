@@ -11,5 +11,5 @@ def test_address_for_contactname(driver):
     try_sql_page.open_page()
     try_sql_page.click_run_sql()
     try_sql_page.check_returned_values()
-    try_sql_page.check_address_for_contactname('Via Ludovico il Moro 22', 'Giovanni Rovelli')
+    try_sql_page.check_address_for_contact_name('Via Ludovico il Moro 22', 'Giovanni Rovelli')
 

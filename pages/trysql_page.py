@@ -30,14 +30,11 @@ class TrySqlPage:
         number_of_records_found = int(number_of_records_element.text.replace("Number of Records:", ''))
         print(number_of_records_found)
 
-        # element = self.driver.find_element(*self.NUMBER_OF_RECORDS_RETURNED)
-        # text_of_element = element.text
-        # print(text_of_element)
-        self.driver.switch_to.default_content()
-
-    def check_address_for_contactname(self, expected_address: str, contact_name: str):
+    def check_address_for_contact_name(self, expected_address: str, contact_name: str):
         customer_id = TrySqlPage.get_customer_id_by_text(self.driver, contact_name)
         actual_address = TrySqlPage.get_field_value_by_customer_id(self.driver, 'Address', customer_id)
+        print(f"expected_address : {expected_address}")
+        print(f"actual_address : {actual_address}")
         assert expected_address in actual_address
 
     @staticmethod
@@ -45,11 +42,6 @@ class TrySqlPage:
         customer_id_selector = f"//td[contains(text(), '{text_to_find}')]/parent::tr/td[1]"
         print(f"SELECTOR: {customer_id_selector}")
         customer_id_element = driver.find_element(By.XPATH, customer_id_selector)
-
-        # while not customer_id_element.is_displayed():
-        #     # Scroll down using JavaScript
-        #     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
         customer_id = int(customer_id_element.text)
         return customer_id
 
@@ -70,8 +62,8 @@ class TrySqlPage:
         else:
             raise TypeError("Please, choose the correct column name")
         searched_element = driver.find_element(By.XPATH, f"//table[@class='w3-table-all notranslate']"
-                                                              f"//tr[{str(customer_id + 2)}]/td[{column_index}]")
+                                                              f"//tr[{str(customer_id + 1)}]/td[{column_index}]")
         field_value = searched_element.text
         return field_value
 
-
+    # self.driver.switch_to.default_content()
