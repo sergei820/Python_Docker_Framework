@@ -21,14 +21,14 @@ class TrySqlPage:
     def click_run_sql(self):
         self.driver.find_element(*self.RUN_SQL_BUTTON).click()
 
-    def check_returned_values(self):
+    def check_if_records_returned(self):
         iframe_result_sql = self.driver.find_element(By.ID, "iframeResultSQL")
         self.driver.switch_to.frame(iframe_result_sql)
 
         number_of_records_element = WebDriverWait(self.driver, 3).until(
             ec.visibility_of_element_located(self.NUMBER_OF_RECORDS_RETURNED))
         number_of_records_found = int(number_of_records_element.text.replace("Number of Records:", ''))
-        print(number_of_records_found)
+        assert number_of_records_found > 0
 
     def check_address_for_contact_name(self, expected_address: str, contact_name: str):
         customer_id = TrySqlPage.get_customer_id_by_text(self.driver, contact_name)
