@@ -1,11 +1,9 @@
-import pytest
-
 from pages.trysql_page import TrySqlPage
 
 
 #@pytest.mark.skip
 def test_address_for_contactname(driver):
-    """Вывести все строки таблицы Customers и убедиться,
+    """1. Вывести все строки таблицы Customers и убедиться,
     что запись с ContactName равной 'Giovanni Rovelli'
     имеет Address = 'Via Ludovico il Moro 22'."""
     try_sql_page = TrySqlPage(driver)

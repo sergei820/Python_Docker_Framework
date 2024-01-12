@@ -41,6 +41,13 @@ class TrySqlPage:
         """
         self.driver.execute_script(js)
 
+    def replace_request(self, sql_reuqest: str):
+        js = f"""
+                var cm = document.querySelector('.CodeMirror').CodeMirror;
+                cm.setValue('{sql_reuqest}');
+                """
+        self.driver.execute_script(js)
+
     def check_returned_records_number(self, expected_records_number: int):
         number_of_records_element = WebDriverWait(self.driver, 3).until(
             ec.visibility_of_element_located(self.NUMBER_OF_RECORDS_RETURNED))
