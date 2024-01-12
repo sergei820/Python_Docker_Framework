@@ -1,3 +1,4 @@
+import pytest
 from pages.trysql_page import TrySqlPage
 
 

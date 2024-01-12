@@ -29,7 +29,6 @@ def chrome_driver():
 
 @pytest.fixture
 def ff_driver():
-
     ff_options = webdriver.FirefoxOptions()
     ff_options.page_load_strategy = 'eager'
     ff_options.add_argument('--allow-insecure-localhost')

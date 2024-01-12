@@ -14,7 +14,9 @@ class TrySqlPage:
         self.driver = driver
 
     def open_page(self):
-        self.driver.get("https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all")
+        base_url = Utils.get_config_value('TestConfig', 'base_url')
+        trysql_page_uri = Utils.get_config_value('TestConfig', 'trysql_page_uri')
+        self.driver.get(base_url + trysql_page_uri)
         try:
             self.driver.get("https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all")
         except TimeoutError:

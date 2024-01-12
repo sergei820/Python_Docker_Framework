@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+import yaml
 
 
 class Utils:
@@ -29,3 +30,9 @@ class Utils:
                                                               f"//tr[{str(customer_id + 1)}]/td[{column_index}]")
         field_value = searched_element.text
         return field_value
+
+    @staticmethod
+    def get_config_value(section, key):
+        with open('config.yaml', 'r') as f:
+            config = yaml.safe_load(f)
+        return config[section][key]

@@ -1,9 +1,8 @@
 import pytest
-
 from pages.trysql_page import TrySqlPage
 
 
-#@pytest.mark.skip
+@pytest.mark.skip
 def test_insert_record(chrome_driver):
     """3. Добавить новую запись в таблицу Customers и проверить, что эта запись добавилась."""
     try_sql_page = TrySqlPage(chrome_driver)
