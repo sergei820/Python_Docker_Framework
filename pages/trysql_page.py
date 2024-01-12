@@ -23,7 +23,7 @@ class TrySqlPage:
 
     def check_if_records_returned(self):
         iframe_result_sql = self.driver.find_element(By.ID, "iframeResultSQL")
-        self.driver.switch_to.frame(iframe_result_sql)
+        self.driver.switch_to.frame(iframe_result_sql)  # self.driver.switch_to.default_content()
 
         number_of_records_element = WebDriverWait(self.driver, 3).until(
             ec.visibility_of_element_located(self.NUMBER_OF_RECORDS_RETURNED))
@@ -37,10 +37,12 @@ class TrySqlPage:
         print(f"actual_address : {actual_address}")
         assert expected_address in actual_address
 
+    def edit_select_request(self, reuqest_specification: str):
+        pass
+
     @staticmethod
     def get_customer_id_by_text(driver, text_to_find) -> int:
         customer_id_selector = f"//td[contains(text(), '{text_to_find}')]/parent::tr/td[1]"
-        print(f"SELECTOR: {customer_id_selector}")
         customer_id_element = driver.find_element(By.XPATH, customer_id_selector)
         customer_id = int(customer_id_element.text)
         return customer_id
@@ -66,4 +68,4 @@ class TrySqlPage:
         field_value = searched_element.text
         return field_value
 
-    # self.driver.switch_to.default_content()
+
