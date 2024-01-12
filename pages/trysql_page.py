@@ -8,6 +8,7 @@ class TrySqlPage:
     SQL_STATEMENT = (By.CSS_SELECTOR, ".CodeMirror-code")
     RUN_SQL_BUTTON = (By.XPATH, "//button[text()='Run SQL »']")
     NUMBER_OF_RECORDS_RETURNED = (By.XPATH, "//div[contains(text(), 'Number of Records:')]")
+    ROWS_IN_RESULT_TABLE = (By.CSS_SELECTOR, "table.w3-table-all tr")
 
     def __init__(self, driver):
         self.driver = driver
@@ -40,10 +41,13 @@ class TrySqlPage:
         """
         self.driver.execute_script(js)
 
-    def check_returned_records_number(self, returned_records_number: int):
+    def check_returned_records_number(self, expected_records_number: int):
         number_of_records_element = WebDriverWait(self.driver, 3).until(
             ec.visibility_of_element_located(self.NUMBER_OF_RECORDS_RETURNED))
         number_of_records_found = int(number_of_records_element.text.replace("Number of Records:", ''))
-        assert number_of_records_found == returned_records_number
+        assert number_of_records_found == expected_records_number
+
+        rows_in_table = self.driver.find_elements(*self.ROWS_IN_RESULT_TABLE)
+        assert len(rows_in_table) == expected_records_number + 1  # table header is an additional row
 
 
