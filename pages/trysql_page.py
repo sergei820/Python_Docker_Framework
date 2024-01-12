@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from utils.utils import Utils
-from time import sleep
 
 
 class TrySqlPage:
@@ -24,7 +23,6 @@ class TrySqlPage:
         run_sql_button = WebDriverWait(self.driver, 3).until(
             ec.element_to_be_clickable(self.RUN_SQL_BUTTON))
         run_sql_button.click()
-        sleep(3)
 
     def switch_to_iframe_result_sql(self):
         iframe_result_sql = self.driver.find_element(By.ID, "iframeResultSQL")
@@ -33,15 +31,9 @@ class TrySqlPage:
     def check_address_for_contact_name(self, expected_address: str, contact_name: str):
         customer_id = Utils.get_customer_id_by_text(self.driver, contact_name)
         actual_address = Utils.get_field_value_by_customer_id(self.driver, 'Address', customer_id)
-        print(f"expected_address : {expected_address}")
-        print(f"actual_address : {actual_address}")
         assert expected_address in actual_address
 
     def edit_select_request(self, reuqest_specification: str):
-        # element_to_specify_request = self.driver.find_element(By.XPATH, "//div[@class='CodeMirror-lines']//pre["
-        # "@class=' CodeMirror-line ']/span/span[last()]")
-        # self.driver.execute_script("arguments[0].textContent =
-        # arguments[1];", element_to_specify_request, reuqest_specification)
         js = f"""
         var cm = document.querySelector('.CodeMirror').CodeMirror;
         cm.setValue('SELECT * FROM Customers {reuqest_specification};');
