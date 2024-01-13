@@ -12,6 +12,11 @@ Task:
 - Тесты должны запускаться в docker контейнере
 - Код автотестов нужно выложить в любой git-репозиторий
 
+To run the framework:
+    
+    pytest -v -s tests
+
+
 
 
 what should be done:
@@ -20,6 +25,3 @@ pip install --upgrade webdriver_manager
 pip install --upgrade selenium
 pip install webdriver_manager
 pip install pyyaml
-
-вынести инициализацию драйвера в фикстуру
-брать url из конфиг файла
