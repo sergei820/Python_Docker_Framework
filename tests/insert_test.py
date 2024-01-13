@@ -8,11 +8,11 @@ def test_insert_record(chrome_driver):
     try_sql_page = TrySqlPage(chrome_driver)
 
     try_sql_page.open_page()
-    try_sql_page.replace_request('INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)'
-                                 ' VALUES ("New Customer", "New Contact", "Some Addr", "SomeCity", "0043", "UK");')
     try_sql_page.click_run_sql()
     try_sql_page.switch_to_iframe_result_sql()
     try_sql_page.check_address_for_contact_name('Some Addr', 'New Contact')
+    try_sql_page.replace_request('INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)'
+                                 ' VALUES ("New Customer", "New Contact", "Some Addr", "SomeCity", "0043", "UK");')
 
     try_sql_page.replace_request('SELECT * FROM Customers;')
     try_sql_page.click_run_sql()

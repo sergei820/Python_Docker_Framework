@@ -29,6 +29,7 @@ class TrySqlPage:
 
     def switch_to_iframe_result_sql(self):
         iframe_result_sql = self.driver.find_element(By.ID, "iframeResultSQL")
+        # WebDriverWait(self.driver, 10).until(ec.frame_to_be_available_and_switch_to_it(iframe_result_sql))
         self.driver.switch_to.frame(iframe_result_sql)  # self.driver.switch_to.default_content()
 
     def check_address_for_contact_name(self, expected_address: str, contact_name: str):

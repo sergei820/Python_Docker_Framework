@@ -15,7 +15,7 @@ def test_address_for_contactname(chrome_driver):
     try_sql_page.check_address_for_contact_name('Via Ludovico il Moro 22', 'Giovanni Rovelli')
 
 
-#@pytest.mark.skip
+@pytest.mark.skip
 def test_records_number_for_specific_city(chrome_driver):
     """2. Вывести только те строки таблицы Customers, где city='London'. Проверить, что в таблице ровно 6 записей."""
     try_sql_page = TrySqlPage(chrome_driver)

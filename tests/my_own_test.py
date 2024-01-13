@@ -2,6 +2,7 @@ import pytest
 from pages.trysql_page import TrySqlPage
 
 
+@pytest.mark.skip
 def test_delete(chrome_driver):
     """5. Придумать собственный автотест и реализовать (тут все ограничивается только вашей фантазией)"""
     try_sql_page = TrySqlPage(chrome_driver)

@@ -21,7 +21,26 @@ To run the framework:
 
 what should be done:
 python.exe -m pip install --upgrade pip
+pip3 install pytest
 pip install --upgrade webdriver_manager
 pip install --upgrade selenium
 pip install webdriver_manager
 pip install pyyaml
+
+
+On Mac:
+pip3 install --upgrade pip
+pip3 install pytest
+pip3 install selenium
+pip3 install webdriver_manager
+pip3 install pyyaml
+
+
+DELETE, UPDATE, INSERT operations work in Chrome Version 111.0.5563.64 (Official Build) (arm64)
+but iframe doesn't work
+
+https://stackoverflow.com/questions/77461398/w3schools-com-features-dont-work-in-latest-chrome-version
+Google has removed the ability to use WebSQL in Chrome version 119: Intent to Deprecate and Remove Web SQL
+
+So, the solution is: use Chrome 114 (check), that will allow DELETE, UPDATE, INSERT
+and able to use WebSQL at  the same time
