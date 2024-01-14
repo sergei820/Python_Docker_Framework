@@ -15,7 +15,7 @@ Task:
 To run the framework:
     
     docker-compose up -d
-    pytest tests
+    pytest --browser=chrome_docker tests
 
 
 Rewrite dockerfile, to run the framework automatically as part of docker-compose
@@ -28,7 +28,6 @@ pip install webdriver_manager
 pip install pyyaml
 pip install --upgrade webdriver_manager
 pip install --upgrade selenium
-
 
 On Mac:
 pip3 install --upgrade pip
@@ -49,5 +48,4 @@ and able to use WebSQL at  the same time
 
 TODO:
 dockerfile for running in one command
-parametrize driver choosing
 invent more interesting own test scenario
