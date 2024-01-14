@@ -2,12 +2,12 @@ import pytest
 from pages.trysql_page import TrySqlPage
 
 
-@pytest.mark.skip
-def test_update_operation(chrome_driver):
+#@pytest.mark.skip
+def test_update_operation(remote_driver):
     """4. Обновить все поля (кроме CustomerID) в любой записи таблицы Customers
     и проверить, что изменения записались в базу."""
 
-    try_sql_page = TrySqlPage(chrome_driver)
+    try_sql_page = TrySqlPage(remote_driver)
 
     try_sql_page.open_page()
     try_sql_page.replace_request(

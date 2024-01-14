@@ -8,16 +8,19 @@ class TrySqlPage:
     SQL_STATEMENT = (By.CSS_SELECTOR, ".CodeMirror-code")
     RUN_SQL_BUTTON = (By.XPATH, "//button[text()='Run SQL »']")
     NUMBER_OF_RECORDS_RETURNED = (By.XPATH, "//div[contains(text(), 'Number of Records:')]")
-    ROWS_IN_RESULT_TABLE = (By.CSS_SELECTOR, "table.w3-table-all tr")
+    # ROWS_IN_RESULT_TABLE = (By.CSS_SELECTOR, "table.w3-table-all tr")
+    # Another selector in Chrome 114 (if running in Docker)
+    ROWS_IN_RESULT_TABLE = (By.CSS_SELECTOR, "table.ws-table-all tr")
 
     def __init__(self, driver):
         self.driver = driver
 
     def open_page(self):
-        # base_url = Utils.get_config_value('TestConfig', 'base_url')
-        # trysql_page_uri = Utils.get_config_value('TestConfig', 'trysql_page_uri')
-        # self.driver.get(base_url + trysql_page_uri)
-        self.driver.get("https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all")  # hardcoded for docker
+        base_url = Utils.get_config_value('TestConfig', 'base_url')
+        trysql_page_uri = Utils.get_config_value('TestConfig', 'trysql_page_uri')
+        self.driver.get(base_url + trysql_page_uri)
+        # hardcoded for debugging in docker
+        # self.driver.get("https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all")
 
     def click_run_sql(self):
         run_sql_button = WebDriverWait(self.driver, 3).until(
@@ -55,6 +58,6 @@ class TrySqlPage:
         assert number_of_records_found == expected_records_number
 
         rows_in_table = self.driver.find_elements(*self.ROWS_IN_RESULT_TABLE)
-        assert len(rows_in_table) == expected_records_number + 1  # table header is an additional row
+        assert len(rows_in_table) - 1 == expected_records_number  # table header is an additional row
 
 
