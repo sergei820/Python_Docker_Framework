@@ -28,8 +28,11 @@ class Utils:
             column_index = 7
         else:
             raise TypeError("Please, choose the correct column name")
-        searched_element = driver.find_element(By.XPATH, f"//table[@class='w3-table-all notranslate']"
-                                                              f"//tr[{str(customer_id + 1)}]/td[{column_index}]")
+        # searched_element = driver.find_element(
+        #     By.XPATH, f"//table[@class='w3-table-all notranslate']//tr[{str(customer_id + 1)}]/td[{column_index}]")
+        # ANOTHER SELECTOR IN CHROME 114 (used in Docker):
+        searched_element = driver.find_element(
+            By.XPATH, f"//table[@class='ws-table-all notranslate']//tr[{str(customer_id + 1)}]/td[{column_index}]")
         field_value = searched_element.text
         return field_value
 

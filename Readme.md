@@ -14,18 +14,20 @@ Task:
 
 To run the framework:
     
-    pytest -v -s tests
+    docker-compose up -d
+    pytest tests
 
 
-
+Rewrite dockerfile, to run the framework automatically as part of docker-compose
 
 what should be done:
 python.exe -m pip install --upgrade pip
-pip3 install pytest
-pip install --upgrade webdriver_manager
-pip install --upgrade selenium
+pip install pytest
+pip install selenium
 pip install webdriver_manager
 pip install pyyaml
+pip install --upgrade webdriver_manager
+pip install --upgrade selenium
 
 
 On Mac:

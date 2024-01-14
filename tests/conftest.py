@@ -3,6 +3,27 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+
+@pytest.fixture
+def remote_driver():
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.page_load_strategy = 'eager'  # 'normal' probably will work with chrome 114
+    chrome_options.add_argument('--allow-insecure-localhost')
+    chrome_options.add_argument('--ignore-certificate-errors')
+    chrome_options.add_argument("--ignore-ssl-errors")
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    chrome_options.add_argument('--log-level=3')
+
+    driver = webdriver.Remote(
+        command_executor='http://localhost:4444/wd/hub',
+        options=chrome_options
+    )
+    driver.implicitly_wait(1)
+    yield driver
+    driver.quit()
 
 
 @pytest.fixture
