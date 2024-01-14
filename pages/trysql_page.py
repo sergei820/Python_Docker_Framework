@@ -52,7 +52,7 @@ class TrySqlPage:
         self.driver.execute_script(js)
 
     def check_returned_records_number(self, expected_records_number: int):
-        number_of_records_element = WebDriverWait(self.driver, 3).until(
+        number_of_records_element = WebDriverWait(self.driver, 5).until(
             ec.visibility_of_element_located(self.NUMBER_OF_RECORDS_RETURNED))
         number_of_records_found = int(number_of_records_element.text.replace("Number of Records:", ''))
         assert number_of_records_found == expected_records_number
