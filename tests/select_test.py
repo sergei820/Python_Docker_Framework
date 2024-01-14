@@ -23,6 +23,6 @@ def test_records_number_for_specific_city(remote_driver):
     try_sql_page.open_page()
     try_sql_page.edit_select_request('WHERE city="London"')
     try_sql_page.click_run_sql()
-    # try_sql_page.switch_to_iframe_result_sql()
+    # try_sql_page.switch_to_iframe_result_sql()  # not needed in Chrome 114 (used in Docker)
     try_sql_page.check_returned_records_number(6)
 

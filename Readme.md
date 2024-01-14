@@ -21,7 +21,7 @@ To run the framework:
 Rewrite dockerfile, to run the framework automatically as part of docker-compose
 
 what should be done:
-python.exe -m pip install --upgrade pip
+python -m pip install --upgrade pip
 pip install pytest
 pip install selenium
 pip install webdriver_manager
@@ -46,3 +46,8 @@ Google has removed the ability to use WebSQL in Chrome version 119: Intent to De
 
 So, the solution is: use Chrome 114 (check), that will allow DELETE, UPDATE, INSERT
 and able to use WebSQL at  the same time
+
+TODO:
+dockerfile for running in one command
+parametrize driver choosing
+invent more interesting own test scenario
