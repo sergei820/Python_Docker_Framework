@@ -3,7 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 @pytest.fixture
@@ -38,7 +37,6 @@ def chrome_driver():
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
     chrome_options.add_argument('--log-level=3')
 
-    # chrome_driver_path = "driver/chromedriver_win.exe"
     chrome_driver_path = ChromeDriverManager().install()
     service = Service(executable_path=chrome_driver_path)
 
