@@ -3,10 +3,10 @@ from pages.trysql_page import TrySqlPage
 
 
 #@pytest.mark.skip
-def test_update_operation(remote_driver):
+def test_update_operation(driver_fixture):
     """4. Обновить все поля (кроме CustomerID) в любой записи таблицы Customers
     и проверить, что изменения записались в базу."""
-    try_sql_page = TrySqlPage(remote_driver)
+    try_sql_page = TrySqlPage(driver_fixture)
 
     try_sql_page.open_page()
     try_sql_page.replace_request(

@@ -3,11 +3,11 @@ from pages.trysql_page import TrySqlPage
 
 
 #@pytest.mark.skip
-def test_address_for_contactname(remote_driver):
+def test_address_for_contactname(driver_fixture):
     """1. Вывести все строки таблицы Customers и убедиться,
     что запись с ContactName равной 'Giovanni Rovelli'
     имеет Address = 'Via Ludovico il Moro 22'."""
-    try_sql_page = TrySqlPage(remote_driver)
+    try_sql_page = TrySqlPage(driver_fixture)
 
     try_sql_page.open_page()
     try_sql_page.click_run_sql()
@@ -16,9 +16,9 @@ def test_address_for_contactname(remote_driver):
 
 
 #@pytest.mark.skip
-def test_records_number_for_specific_city(remote_driver):
+def test_records_number_for_specific_city(driver_fixture):
     """2. Вывести только те строки таблицы Customers, где city='London'. Проверить, что в таблице ровно 6 записей."""
-    try_sql_page = TrySqlPage(remote_driver)
+    try_sql_page = TrySqlPage(driver_fixture)
 
     try_sql_page.open_page()
     try_sql_page.edit_select_request('WHERE city="London"')

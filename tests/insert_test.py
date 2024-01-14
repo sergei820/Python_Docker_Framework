@@ -3,9 +3,9 @@ from pages.trysql_page import TrySqlPage
 
 
 # @pytest.mark.skip
-def test_insert_record(remote_driver):
+def test_insert_record(driver_fixture):
     """3. Добавить новую запись в таблицу Customers и проверить, что эта запись добавилась."""
-    try_sql_page = TrySqlPage(remote_driver)
+    try_sql_page = TrySqlPage(driver_fixture)
 
     try_sql_page.open_page()
     # try_sql_page.switch_to_iframe_result_sql()  # not needed in Chrome 114 (used in Docker)

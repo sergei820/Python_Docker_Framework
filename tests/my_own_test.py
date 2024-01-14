@@ -3,9 +3,9 @@ from pages.trysql_page import TrySqlPage
 
 
 #@pytest.mark.skip
-def test_delete(remote_driver):
+def test_delete(driver_fixture):
     """5. Придумать собственный автотест и реализовать (тут все ограничивается только вашей фантазией)"""
-    try_sql_page = TrySqlPage(remote_driver)
+    try_sql_page = TrySqlPage(driver_fixture)
 
     try_sql_page.open_page()
     try_sql_page.replace_request('DELETE FROM Customers WHERE CustomerID = 5')
