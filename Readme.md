@@ -47,5 +47,4 @@ So, the solution is: use Chrome 114 (check), that will allow DELETE, UPDATE, INS
 and able to use WebSQL at  the same time
 
 TODO:
-dockerfile for running in one command
-invent more interesting own test scenario
+dockerfile for running the whole framework from docker compose in one command
